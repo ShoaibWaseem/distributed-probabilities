@@ -5,17 +5,52 @@ import java.util.Random;
 
 public class RandomGen {
     // Values that may be returned by nextNum() private
-    private final int[] randomNums;
+    private int[] randomNums;
     // Probability of the occurence of randomNums private
-    private final float[] probabilities;
+    private float[] probabilities;
 
-    private final Random random;
+    private Random random;
 
+    /**
+     * Constructs a new Random Generator with the provided arguments. The arrays provided
+     * will be the order of probabilities and their return value.
+     *
+     * The arrays must pass the following critera:
+     * - They are not null
+     * - Their length is greater than 0
+     * - Their lengths are equal to one another
+     * - All probability values are between 0 and 1
+     * - The sum of probabilities does not exceed 1
+     *
+     * @param randomNum numbers to return
+     * @param probabilities probabilities to base numbers to return
+     * @param random {@link Random} generator
+     * @throws RandomGenValidationException if the provided values do meet the rule criteria.
+     */
     public RandomGen(final int[] randomNum, final float[] probabilities, final Random random) {
         this.randomNums = randomNum;
         this.probabilities = probabilities;
         this.random = random;
         validation();
+    }
+
+    /**
+     * Constructs a new Random Generator with the provided arguments. The arrays provided
+     * will be the order of probabilities and their return value.
+     *
+     * The arrays must pass the following critera:
+     * - They are not null
+     * - Their length is greater than 0
+     * - Their lengths are equal to one another
+     * - All probability values are between 0 and 1
+     * - The sum of probabilities does not exceed 1
+     *
+     * @param randomNum numbers to return
+     * @param probabilities probabilities to base numbers to return
+     * @throws RandomGenValidationException if the provided values do meet the rule criteria.
+     */
+    public RandomGen(final int[] randomNum, final float[] probabilities) {
+        new RandomGen(randomNum, probabilities, new Random());
     }
 
     /**

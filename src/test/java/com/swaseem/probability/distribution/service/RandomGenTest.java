@@ -29,7 +29,7 @@ class RandomGenTest {
     void validation_shouldThrowErrors(final int[] randomNums, final float[] probabilities, final String expectedErrorMessage) {
 
         RandomGenValidationException result = Assertions.assertThrows(RandomGenValidationException.class, () -> {
-            new RandomGen(randomNums, probabilities, random);
+            new RandomGen(randomNums, probabilities);
         });
         Assertions.assertEquals(expectedErrorMessage, result.getMessage());
     }
